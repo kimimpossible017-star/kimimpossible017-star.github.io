@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <meta name="description" content="A sweet Valentine's Day message for someone special">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <canvas id="heartCanvas"></canvas>
+
+    <div class="sparkle-container" id="sparkleContainer"></div>
+
+    <main id="app">
+
+        <section id="page1" class="page active">
+            <div class="page-content">
+                <div class="floating-hearts">
+                    <span class="float-heart">💕</span>
+                    <span class="float-heart">💗</span>
+                    <span class="float-heart">💖</span>
+                </div>
+                <div class="glass-card main-card">
+                    <div class="card-glow"></div>
+                    <h1 class="title-main" id="mainQuestion">Will you be my Valentine?</h1>
+                    <p class="subtitle" id="subQuestion">Please say yes </p>
+                    <div class="button-group">
+                        <button id="yesBtn" class="btn btn-yes">
+                            <span class="btn-text">YES</span>
+                            <span class="btn-shine"></span>
+                        </button>
+                        <button id="noBtn" class="btn btn-no">
+                            <span class="btn-text">NO</span>
+                        </button>
+                    </div>
+                    <p id="noEscapeText" class="escape-text hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page2" class="page">
+            <div class="page-content">
+                <div class="celebration-burst" id="celebrationBurst"></div>
+                <div class="glass-card">
+                    <div class="card-glow"></div>
+                    <div class="emoji-bounce">🎉</div>
+                    <h1 class="title-cursive" id="confirmTitle">YAAAY! Kamu beneran mau 💗</h1>
+                    <div class="confirmation-box">
+                        <p id="confirmText">Mulai dari sekarang kamu resmi jadi…</p>
+                        <div class="badge-container">
+                            <div class="badge">
+                                <span class="badge-text">My Valentine</span>
+                                <div class="badge-sparkle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="nextToPage3" class="btn btn-primary">
+                            <span class="btn-text">Lanjut </span>
+                            <span class="btn-shine"></span>
+                        </button>
+                        <button id="backToPage1" class="btn btn-ghost btn-small">Ulangi pertanyaan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page3" class="page">
+            <div class="page-content flower-page">
+                <div class="falling-petals" id="petalsContainer"></div>
+                <div class="glass-card">
+                    <div class="card-glow"></div>
+                    <h1 class="title-cursive" id="flowerTitle">Ini kado spesial buat kamu </h1>
+                    <div class="bouquet-wrapper">
+                        <div class="bouquet-glow"></div>
+                        <div class="bouquet" id="bouquet">
+                            <img src="https://raw.githubusercontent.com/lukman467/coding/refs/heads/main/valentine3/assets/flower.png" alt="Buket Bunga" class="bouquet-img">
+                        </div>
+                    </div>
+                    <p id="bouquetMessage" class="bouquet-message hidden">Yeay! Udah jadi milik kamu 💕</p>
+                    <div class="button-group">
+                        <button id="takeBouquet" class="btn btn-primary">
+                            <span class="btn-text">Terima hadiahnya </span>
+                            <span class="btn-shine"></span>
+                        </button>
+                        <button id="nextToPage4" class="btn btn-primary hidden">
+                            <span class="btn-text">Next </span>
+                            <span class="btn-shine"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page4" class="page">
+            <div class="page-content">
+                <div class="glass-card collage-card">
+                    <div class="card-glow"></div>
+                    <h1 class="title-cursive" id="collageTitle">My Beautiful You</h1>
+                    <p class="collage-subtitle" id="collageSubtitle">Sejak kamu hadir, hal sederhana pun terasa
+                        istimewa. Happy Valentine, my favorite person. 💕</p>
+                    <div class="photo-grid">
+                        <div class="photo-item">
+                            <img src="https://private-user-images.githubusercontent.com/261616233/549890910-ac61f2d5-ac51-4f53-816e-410f28292574.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwNzgzMzgsIm5iZiI6MTc3MTA3ODAzOCwicGF0aCI6Ii8yNjE2MTYyMzMvNTQ5ODkwOTEwLWFjNjFmMmQ1LWFjNTEtNGY1My04MTZlLTQxMGYyODI5MjU3NC5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTQwNzE4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzhhYzMwZTIyZTA2ZTI4NDgxNjZiMzJkMTZiMzE3ZTgzNzg4YzYwNmZmZmJhMTQyMWVmYjlkNGJmNmUzNWNjNyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.WgEXGyzt99QfxnX8QZ2b55AAC6FQVXThHB4nLHD2lLw" class="photo-preview" alt="Foto 1">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://private-user-images.githubusercontent.com/261616233/549891281-f7603aef-be6a-455b-9ee8-2c2bbf6c668f.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwNzg2NTUsIm5iZiI6MTc3MTA3ODM1NSwicGF0aCI6Ii8yNjE2MTYyMzMvNTQ5ODkxMjgxLWY3NjAzYWVmLWJlNmEtNDU1Yi05ZWU4LTJjMmJiZjZjNjY4Zi5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTQxMjM1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YmJiMTdiODkyN2UzNzFkZTNjNGIxMjdkYzEyNWJhZTkxMWU5NWJkNmViOGRkNGYxNjY3ZThkYzU0MDRjYTY4YyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.3JyQpkpZXBN7y8NTEU-yVDBnxbvikp2_Ed4ukwuTOZI" class="photo-preview" alt="Foto 2">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://private-user-images.githubusercontent.com/261616233/549891231-38a089b0-b0b0-4e04-8ff8-196512d99bc0.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwNzg2ODEsIm5iZiI6MTc3MTA3ODM4MSwicGF0aCI6Ii8yNjE2MTYyMzMvNTQ5ODkxMjMxLTM4YTA4OWIwLWIwYjAtNGUwNC04ZmY4LTE5NjUxMmQ5OWJjMC5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTQxMzAxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZGQ1YTk2ZTU2NmI3ODM5NzFhYzYzODY3ZGMyOWEwODcwYTliNjY0ZmJlYzYwMzBhMjdkMTQ0ZWU5YjY5MGFhYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.AsQlv5O66GSTZjob6mBDoi9o02LywWbYYZZgQAuaQ_U" class="photo-preview" alt="Foto 3">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://private-user-images.githubusercontent.com/261616233/549891331-457479e8-e2df-4e0a-b553-14765e69fd23.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwNzg2OTgsIm5iZiI6MTc3MTA3ODM5OCwicGF0aCI6Ii8yNjE2MTYyMzMvNTQ5ODkxMzMxLTQ1NzQ3OWU4LWUyZGYtNGUwYS1iNTUzLTE0NzY1ZTY5ZmQyMy5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTQxMzE4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OGM0ZDYzZDI4ZjAyMTkxOWMwNWIyOTVlZGMzOWRjNTNhYmNiZGEyMGI2OTM1M2E1OWRjNTJjYzk1OTY0ZDg2NCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ArLddAIF2g8TH5MyJdcOjrJzf-6QC1dpKY8Is5hVfEc" class="photo-preview" alt="Foto 4">
+                        </div>
+                    </div>
+                    <button id="nextToPage5" class="btn btn-primary">
+                        <span class="btn-text">Satu halaman lagi… </span>
+                        <span class="btn-shine"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page5" class="page">
+            <div class="page-content">
+                <div id="confettiContainer" class="confetti-container"></div>
+
+                <div class="envelope-wrapper" id="envelopeWrapper">
+                    <div class="envelope-container">
+                        <div class="envelope" id="envelope">
+                            <div class="envelope-back"></div>
+                            <div class="letter" id="letter">
+                                <div class="letter-content">
+                                    <span class="letter-heart">💕</span>
+                                    <span class="letter-text">For You</span>
+                                </div>
+                            </div>
+                            <div class="envelope-front"></div>
+                            <div class="envelope-flap"></div>
+                        </div>
+                    </div>
+                    <p class="envelope-hint" id="envelopeHint">Tap untuk membuka</p>
+                </div>
+
+                <div class="glass-card final-card hidden" id="finalContent">
+                    <div class="card-glow"></div>
+                    <div class="final-emoji">💞</div>
+                    <h1 class="title-cursive title-final" id="finalTitle">Happy Valentine, My Love 💞</h1>
+                    <div class="message-box">
+                        <div class="message-decoration">✨</div>
+                        <p id="finalMessage">
+                            Makasih ya sudah hadir dan bikin hariku selalu terasa cukup. Kamu adalah alasan kenapa
+                            senyum itu mudah muncul. Semoga hari harimu selalu penuh kehangatan dan kebahagiaan. Aku
+                            selalu ada untukmu. Happy Valentine 💕
+                        </p>
+                        <div class="message-decoration right">✨</div>
+                    </div>
+                    <div class="button-group final-buttons">
+                        <button id="restartBtn" class="btn btn-ghost">
+                            <span class="btn-text">Restart </span>
+                        </button>
+                        <button id="copyBtn" class="btn btn-primary">
+                            <span class="btn-text">Copy Message </span>
+                            <span class="btn-shine"></span>
+                        </button>
+                    </div>
+                    <p id="copyNotif" class="copy-notif hidden">Pesan berhasil dicopy! </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
